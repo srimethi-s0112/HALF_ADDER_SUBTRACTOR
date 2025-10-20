@@ -34,7 +34,10 @@ Borrow = A’B
 Figure -02 HALF Subtractor
 
 **Truthtable**
-
+full adder
+<img width="444" height="380" alt="image" src="https://github.com/user-attachments/assets/a1e97067-c090-4499-b814-eee084de4e28" />
+full subtractor
+<img width="431" height="282" alt="image" src="https://github.com/user-attachments/assets/daf5bc3a-2955-4aca-9022-e0e596bc8ae0" />
 **Procedure**
 
 1.	Type the program in Quartus software.
@@ -46,16 +49,47 @@ Figure -02 HALF Subtractor
 4.	Create nodes for inputs and outputs to generate the timing diagram.
 
 5.	For different input combinations generate the timing diagram.
-
-
 **Program:**
+```
+Full Adder
+-------------------------------------
+// Full Adder in Verilog
+module full_adder (
+    input  wire a, b, cin,   // Inputs
+    output wire sum, carry   // Outputs
+);
 
-/* Program to design a half adder and full adder circuit and verify its truth table in quartus using Verilog programming.
+    // Logic equations
+    assign sum   = a ^ b ^ cin;                  // XOR for sum
+    assign carry = (a & b) | (b & cin) | (a & cin); // Majority function for carry
+endmodule
 
-Developed by: RegisterNumber:*/
+Full Sub
+-------------------------------------
+// Full Subtractor in Verilog
+module full_subtractor (
+    input  wire a, b, bin,       // Inputs
+    output wire diff, borrow     // Outputs
+);
 
-**RTL Schematic**
-
-**Output/TIMING Waveform**
-
+    // Logic equations
+    assign diff   = a ^ b ^ bin;                  // Difference
+    assign borrow = (~a & b) | (~(a ^ b) & bin);  // Borrow logic
+endmodule
+```
+```
+Developed by:srimathi.s
+RegisterNumber:25011379
+```
+**output**
+full adder
+<img width="778" height="395" alt="image" src="https://github.com/user-attachments/assets/ea1a90d6-d9cb-487a-b728-4ca462b52702" />
+full sub
+<img width="776" height="397" alt="image" src="https://github.com/user-attachments/assets/47755d1d-89d8-40df-b4e5-be3cb507c99c" />
+**TIMING Waveform**
+full adder
+<img width="778" height="396" alt="image" src="https://github.com/user-attachments/assets/d32f3a89-ba50-434e-a38c-a3219ffc1a29" />
+full sub
+<img width="772" height="401" alt="image" src="https://github.com/user-attachments/assets/bbd5e526-6a05-4ffa-8bb4-5760f735f4b7" />
 **Result:**
+Toverify sucesfully design a half adder and half subtractor circuit and verify its truth table in Quartus using Verilog programming.
